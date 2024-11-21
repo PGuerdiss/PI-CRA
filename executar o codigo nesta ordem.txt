@@ -1,0 +1,50 @@
+CREATE TABLE postagem (
+  cd_postagem int NOT NULL AUTO_INCREMENT,
+  nome varchar(100) DEFAULT NULL,
+  idade int DEFAULT NULL,
+  ultima_localidade varchar(100) DEFAULT NULL,
+  foto varchar(255) DEFAULT NULL,
+  informacoes_adicionais text,
+  data datetime DEFAULT NULL,
+  aprovar int notnull,
+  PRIMARY KEY (cd_postagem)
+)
+ 
+CREATE TABLE endereco (
+  cd_endereco int NOT NULL,
+  cep varchar(10) DEFAULT NULL,
+  rua varchar(100) DEFAULT NULL,
+  numero int DEFAULT NULL,
+  complemento varchar(50) DEFAULT NULL,
+  bairro varchar(100) DEFAULT NULL,
+  PRIMARY KEY (cd_endereco)
+)
+ 
+ 
+CREATE TABLE usuario (
+  cd_usuario int NOT NULL AUTO_INCREMENT,
+  nome varchar(100) DEFAULT NULL,
+  cpf varchar(11) DEFAULT NULL,
+  telefone varchar(15) DEFAULT NULL,
+  email varchar(100) DEFAULT NULL,
+  senha varchar(50) DEFAULT NULL,
+  cd_postagem int DEFAULT NULL,
+  cd_endereco int DEFAULT NULL,
+  foto_perfil varchar(255) DEFAULT NULL,
+  PRIMARY KEY (cd_usuario),
+  KEY cd_endereco (cd_endereco),
+  KEY usuario_ibfk_1 (cd_postagem),
+  CONSTRAINT usuario_ibfk_1 FOREIGN KEY (cd_postagem) REFERENCES postagem (cd_postagem),
+  CONSTRAINT usuario_ibfk_2 FOREIGN KEY (cd_endereco) REFERENCES endereco (cd_endereco)
+)
+ 
+ 
+CREATE TABLE funcionario (
+  cd_funcionario int NOT NULL,
+  nome varchar(100) DEFAULT NULL,
+  cpf varchar(11) DEFAULT NULL,
+  telefone varchar(15) DEFAULT NULL,
+  login varchar(50) DEFAULT NULL,
+  senha varchar(50) DEFAULT NULL,
+  PRIMARY KEY (cd_funcionario)
+)

@@ -1,0 +1,72 @@
+.contenedor {
+  max-width: 1200px;
+  padding: 1em;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.contenedor-items {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-gap: 30px;
+  grid-row-gap: 30px;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.item {
+  max-width: 200px;
+  margin: auto;
+  border: 0.1em solid black;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.img-item {
+  display: block;
+  margin: 0 auto 10px;
+  width: 140px;
+  height: 140px;
+  border-radius: 10px; /* Torna a imagem mais harmoniosa */
+  object-fit: cover; /* Garante que a imagem preencha o espaço sem distorção */
+}
+
+#desc {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.item:hover {
+  box-shadow: 0 0 10px black;
+  transform: scale(1.05);
+}
+
+.btn {
+  text-decoration: none;
+  display: inline-block;
+  margin: 10px 5px;
+  background-color: #31A8F7;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #1d6594;
+}
+
+.btn-reprovar {
+  background-color: #f73131;
+}
+
+.btn-reprovar:hover {
+  background-color: #a62424;
+}

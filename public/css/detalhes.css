@@ -1,0 +1,35 @@
+/* detalhes.css */
+
+/* Estilo para o contêiner do item */
+.item {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Estilo para a imagem */
+.img-item {
+    width: 10em;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+/* Estilo para o título */
+#titulo {
+    font-size: 18px;
+    color: black;
+    font-weight: bold;
+}
+
+/* Estilo para as descrições */
+#desc {
+    display: block;
+    margin-top: 5px;
+    font-size: 16px;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="CSS/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@500;600&display=swap" rel="stylesheet">
+    <script src="JS/login.js" defer></script>
+    <title>Login</title>
+</head>
+
+<body>
+
+<div id="loginbox">
+    <a href="index.html" id="inicio">Inicio</a><br>
+    <img src="img/Logo(CRA).png" id="logo" alt="Logo">
+
+    <h1 class="">Faça seu login!</h1>
+    <form id="loginForm" onsubmit="return logon();">
+        <input class="cod" type="text" name="email" placeholder="Email" required><br>
+        <input class="cod" type="password" name="senha" placeholder="Senha" required><br>
+        <a id="criar" href="cadastro.html">Criar um Cadastro</a>
+        <button id="logar" type="submit">Logar</button>
+    </form>
+</div>
+
+</body>
+</html>

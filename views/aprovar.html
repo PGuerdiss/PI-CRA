@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprovar Postagens</title>
+    <link rel="stylesheet" href="css/aprovar.css" />
+   
+</head>
+<body>
+
+
+    <h1>Aprovar ou Reprovar Postagens</h1>
+    <div class="contenedor">
+        <div id="itens-container" class="contenedor-items">
+            <!-- Os itens serão carregados dinamicamente aqui -->
+        </div>
+    </div>
+
+
+    <script>
+        async function carregarItens() {
+            try {
+                const response = await fetch('/api/postagens/pendentes');
+                const postagens = await response.json();
+
+                const container = document.getElementById('itens-container');
+                container.innerHTML = '';
+
+                postagens.forEach(post => {
+                    let itemHTML = `
+                        <div class="item">
+                            <b><span id="titulo">VOCÊ ME VIU?</span></b>
+                            <img src="${post.foto}" alt="Foto de ${post.nome}" class="img-item">
+                            <span id="desc"><b>Nome:</b> ${post.nome}</span>
+                            <span id="desc"><b>Idade:</b> ${post.idade}</span>
+                            <span id="desc"><b>Última Localidade:</b> ${post.ultima_localidade}</span>
+                            <button onclick="aprovarPostagem(${post.cd_postagem})" class="btn">Aprovar</button>
+                            <button onclick="reprovarPostagem(${post.cd_postagem})" class="btn btn-reprovar">Reprovar</button>
+                        </div>
+                    `;
+
+                    container.innerHTML += itemHTML;
+                });
+            } catch (error) {
+                console.error('Erro ao carregar postagens:', error);
+            }
+        }
+
+        async function aprovarPostagem(cd_postagem) {
+    try {
+        const response = await fetch(`/api/aprovarPostagem/${cd_postagem}`, {
+            method: 'POST', // Alterado de PATCH para POST
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const result = await response.json();
+        if (result.success) {
+            alert('Postagem aprovada com sucesso.');
+            await carregarItens(); // Atualiza a lista de postagens
+        } else {
+            alert('Erro ao aprovar postagem.');
+        }
+    } catch (error) {
+        console.error('Erro ao aprovar postagem:', error);
+    }
+}
+
+async function reprovarPostagem(cd_postagem) {
+    const motivoRecusa = prompt("Digite o motivo da recusa:");
+    if (!motivoRecusa || motivoRecusa.trim() === '') {
+        alert('Motivo da recusa é obrigatório.');
+        return;
+    }
+
+    try {
+        const response = await fetch(`/api/reprovarPostagem/${cd_postagem}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ motivo_recusa: motivoRecusa }) // Envia o motivo da recusa
+        });
+
+        const result = await response.json();
+        if (result.success) {
+            alert('Postagem reprovada com sucesso.');
+            await carregarItens(); // Atualiza a lista de postagens
+        } else {
+            alert(result.message || 'Erro ao reprovar postagem.');
+        }
+    } catch (error) {
+        console.error('Erro ao reprovar postagem:', error);
+    }
+}
+        // Carregar as postagens ao carregar a página
+        window.onload = carregarItens;
+    </script>
+</body>
+</html>

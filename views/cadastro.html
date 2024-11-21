@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br"> 
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="CSS/cadastro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@500;600&display=swap" rel="stylesheet">
+    <title>Cadastre-se!</title>
+</head>
+
+<body>
+    <div id="cadastro">
+        <a href="index.html" id="inicio">Inicio</a><br>
+        <img src="img/Logo(CRA).png" id="logo" alt="Logo">
+        
+        <h1>Faça seu cadastro aqui!</h1>
+        <form action="/cadastrar" method="POST" enctype="multipart/form-data">
+            <input class="cod" type="text" name="nome" placeholder="Nome" required><br>
+            <input class="cod" type="text" name="cpf" placeholder="CPF" required><br>
+            <input class="cod" type="text" name="telefone" placeholder="Telefone para contato" required><br>
+            <input class="cod" type="email" name="email" placeholder="Email" required><br>
+            <input class="cod" type="password" name="senha" placeholder="Senha" required><br>
+            <input class="cod" type="file" name="foto" accept="image/*" required><br>
+            <input type="checkbox" name="termos" id="termos" required><span>Aceito os termos de responsabilidade</span><br>
+            <button id="criar" type="submit">Criar Cadastro</button>
+        </form>
+    </div>
+    
+    <div id="termosModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1>Termos de Responsabilidade</h1>
+            <p>Ao criar uma conta no nosso site, você...</p>
+        </div>
+    </div>
+</body>
+</html>
